@@ -1,0 +1,48 @@
+[
+  {
+    "identity": {
+      "csa_id": "CSA-101",
+      "semantic_code": "CRYPTO.INTEGRITY.VERIFY",
+      "official_name": "Vérification de l'intégrité cryptographique",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    "classification": {
+      "family": "CSA-100",
+      "sub_family": "Intégrité",
+      "domains": ["ESVP", "RMCS"],
+      "criticality": "CRITICAL"
+    },
+    "execution": {
+      "inputs": ["scientific_object", "reference_hash", "declared_algorithm"],
+      "preconditions": ["object_accessible", "hash_available"],
+      "dependencies": []
+    },
+    "results": {
+      "states": ["PASSED", "FAILED", "NOT_APPLICABLE", "ERROR"],
+      "on_failure": "BLOCK_DVS"
+    }
+  },
+  {
+    "identity": {
+      "csa_id": "CSA-102",
+      "semantic_code": "CRYPTO.SIGNATURE.VERIFY",
+      "official_name": "Vérification de la signature numérique",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    "classification": {
+      "family": "CSA-100",
+      "sub_family": "Signature",
+      "domains": ["ESVP", "RMCS"],
+      "criticality": "CRITICAL"
+    },
+    "execution": {
+      "dependencies": ["CSA-101"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED", "NOT_APPLICABLE"],
+      "on_failure": "SUSPEND_VALIDATION"
+    }
+  }
+]

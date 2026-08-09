@@ -1,0 +1,10 @@
+typer>=0.16.0
+rich>=13.7.0
+jinja2>=3.1.4
+pyyaml>=6.0.2
+pydantic>=2.8.2
+
+[dev]
+pytest>=8.3.2
+black>=24.8.0
+ruff>=0.6.2

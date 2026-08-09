@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rocsa.org/schemas/{{ name | snake_case }}.json",
+  "title": "{{ name | camel_case }}Definition",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "format": "uuid",
+      "default": "{{ request_id }}"
+    },
+    "name": {
+      "type": "string",
+      "default": "{{ name }}"
+    },
+    "format": {
+      "type": "string",
+      "default": "{{ format }}"
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        {% for key, value in parameters.items() %}
+        "{{ key }}": {
+          "description": "Paramètre {{ key }}"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      }
+    }
+  },
+  "required": ["name", "request_id"]
+}

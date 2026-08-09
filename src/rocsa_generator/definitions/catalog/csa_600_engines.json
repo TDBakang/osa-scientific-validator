@@ -1,0 +1,122 @@
+[
+  {
+    "identity": {
+      "csa_id": "CSA-601",
+      "semantic_code": "ENGINES.ISA.COMPUTE",
+      "official_name": "Vérification de la conformité des calculs Moteur ISA",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "created_at": "2026-03-01T00:00:00Z",
+      "effective_date": "2026-03-15T00:00:00Z"
+    },
+    "classification": {
+      "family": "CSA-600",
+      "sub_family": "ISA",
+      "domains": ["ISA", "ESVP"],
+      "criticality": "CRITICAL"
+    },
+    "governance": {
+      "author": "Comité Moteurs Scientifiques",
+      "reviewer": "Unité de Validation ESVP",
+      "authority": "Autorité Scientifique RMCS",
+      "doctrinal_version": "P7-2026-003",
+      "document_status": "ACTIVE",
+      "criticality_level": "HIGH",
+      "stability_level": "STABLE"
+    },
+    "scientific_description": {
+      "objective": "Garantir que la production du moteur ISA respecte le modèle mathématique et algorithmique agréé.",
+      "scope": "Résultats d'analyse vectorielle et calculs d'indicateurs ISA.",
+      "limits": "Ne valide pas la recevabilité des données d'entrée (couvertes par CSA-300).",
+      "hypotheses": "Les algorithmes ISA sous-jacents sont certifiés v2.4+.",
+      "exclusions": "Avis d'expert non quantitatifs."
+    },
+    "execution": {
+      "inputs": ["isa_output_dataset", "isa_model_config"],
+      "preconditions": ["PROOF.EXISTS (CSA-311)", "PROOF.INTEGRITY (CSA-331)"],
+      "dependencies": ["CSA-101", "CSA-311", "CSA-331"],
+      "method": "Rejeu de la formule d'agregation ISA et comparaison d'empreinte matricielle.",
+      "parameters": {"tolerance_delta": 0.00001},
+      "postconditions": ["isa_metrics_validated"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED", "WARNING", "ERROR"],
+      "justification": "Ecart entre la valeur recalculée et la valeur soumise inférieur à la tolérance.",
+      "proofs_used": ["isa_execution_trace"],
+      "rules_applied": ["RMCS-RULE-ISA-01"],
+      "confidence_level": 0.99,
+      "exceptions": [
+        {"code": "ISA_ERR_DELTA_EXCEEDED", "description": "L'écart de calcul dépasse le seuil toléré."}
+      ]
+    },
+    "references": {
+      "doctrinal_documents": ["P7-2026-003", "RMCS-REF-ISA-2025"],
+      "rmcs_ids": ["RMCS-RULE-ISA-01"],
+      "esvp_requirements": ["ESVP-REQ-MATH-04"]
+    },
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-03-01",
+        "nature": "Création initiale",
+        "justification": "Adoption du registre ROCSA v1",
+        "approved_by": "Conseil Scientifique"
+      }
+    ]
+  },
+  {
+    "identity": {
+      "csa_id": "CSA-602",
+      "semantic_code": "ENGINES.POA.VALIDATE",
+      "official_name": "Validation des productions du moteur POA",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "created_at": "2026-03-01T00:00:00Z",
+      "effective_date": "2026-03-15T00:00:00Z"
+    },
+    "classification": {
+      "family": "CSA-600",
+      "sub_family": "POA",
+      "domains": ["POA", "ESVP"],
+      "criticality": "MAJOR"
+    },
+    "governance": {
+      "author": "Comité Moteurs Scientifiques",
+      "reviewer": "Unité de Validation ESVP",
+      "authority": "Autorité Scientifique RMCS",
+      "doctrinal_version": "P7-2026-003",
+      "document_status": "ACTIVE",
+      "criticality_level": "MEDIUM",
+      "stability_level": "STABLE"
+    },
+    "scientific_description": {
+      "objective": "Contrôler la conformité de l'arbre d'objectifs généré par le moteur POA.",
+      "scope": "Modèles d'objectifs opérationnels et d'alignement.",
+      "limits": "Ne juge pas de l'opportunité stratégique.",
+      "hypotheses": "Arbre formellement structuré sous syntaxe compatible.",
+      "exclusions": "Note de synthèse manuelle."
+    },
+    "execution": {
+      "inputs": ["poa_tree_json"],
+      "preconditions": ["DOC.IDENTITY.EXISTS (CSA-211)"],
+      "dependencies": ["CSA-211"],
+      "method": "Validation de graphe DAG sans cycle d'objectifs.",
+      "parameters": {},
+      "postconditions": ["poa_structure_valid"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED"],
+      "justification": "Structure acyclique conforme aux règles POA.",
+      "proofs_used": ["poa_graph_export"],
+      "rules_applied": ["RMCS-RULE-POA-02"],
+      "confidence_level": 0.95,
+      "exceptions": []
+    },
+    "references": {
+      "doctrinal_documents": ["P7-2026-003"],
+      "rmcs_ids": ["RMCS-RULE-POA-02"],
+      "esvp_requirements": ["ESVP-REQ-GRAPH-01"]
+    },
+    "history": []
+  }
+]

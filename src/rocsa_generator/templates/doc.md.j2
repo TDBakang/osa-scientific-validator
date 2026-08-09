@@ -1,0 +1,27 @@
+# Documentation du Contrôle : {{ name | camel_case }}
+
+- **ID de la requête :** `{{ request_id }}`
+- **Format cible :** `{{ format }}`
+- **Généré par :** ROCSA Generator v0.1.0
+
+## Description
+Fiche technique auto-générée pour le contrôle scientifique **{{ name }}**.
+
+## Paramètres de Configuration
+
+{% if parameters %}
+| Clé | Valeur par défaut / Type |
+| :--- | :--- |
+{% for key, value in parameters.items() %}
+| `{{ key }}` | `{{ value }}` |
+{% endfor %}
+{% else %}
+*Aucun paramètre spécifié pour ce contrôle.*
+{% endif %}
+
+---
+
+### Exemple de configuration YAML
+
+```yaml
+{{ {"name": name, "parameters": parameters} | to_yaml }}

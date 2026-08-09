@@ -1,0 +1,851 @@
+{
+  "total_entries": 18,
+  "entries": {
+    "CSA-211": {
+      "id": "CSA-211",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_200_documentary.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-211",
+          "semantic_code": "DOC.IDENTITY.EXISTS",
+          "official_name": "Vérification de l'existence documentaire",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-200",
+          "sub_family": "CSA-210 Identification",
+          "domains": [
+            "RMCS",
+            "P7"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-221": {
+      "id": "CSA-221",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_200_documentary.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-221",
+          "semantic_code": "DOC.STATUS.ACTIVE",
+          "official_name": "Vérification du statut documentaire",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-200",
+          "sub_family": "CSA-220 Statut",
+          "domains": [
+            "RMCS"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-232": {
+      "id": "CSA-232",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_200_documentary.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-232",
+          "semantic_code": "DOC.VERSION.APPLICABLE",
+          "official_name": "Vérification de la version applicable",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-200",
+          "sub_family": "CSA-230 Versionnement",
+          "domains": [
+            "RMCS"
+          ],
+          "criticality": "MAJOR"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-411": {
+      "id": "CSA-411",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_400_doctrinal.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-411",
+          "semantic_code": "DOCTRINE.APPLICABLE",
+          "official_name": "Vérification de l'applicabilité d'une règle",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-400",
+          "sub_family": "CSA-410 Applicabilité",
+          "domains": [
+            "RMCS",
+            "P7"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-431": {
+      "id": "CSA-431",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_400_doctrinal.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-431",
+          "semantic_code": "DOCTRINE.HIERARCHY.CHECK",
+          "official_name": "Vérification de la hiérarchie normative",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-400",
+          "sub_family": "CSA-430 Hiérarchie",
+          "domains": [
+            "RMCS",
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-901": {
+      "id": "CSA-901",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_900_audit.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-901",
+          "semantic_code": "AUDIT.LOG.REPLAYABILITY",
+          "official_name": "Contrôle de la rejouabilité intégrale des exécutions",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-900",
+          "sub_family": "Journalisation",
+          "domains": [
+            "ESVP",
+            "RMCS"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "governance": {
+          "author": "Cellule d'Audit et Sécurité",
+          "reviewer": "Unité de Validation ESVP",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "HIGH",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "Vérifier que les journaux d'exécution contiennent l'ensemble des paramètres permettant la rejouabilité déterministe.",
+          "scope": "Logs d'exécution RMCS et traces de calcul.",
+          "limits": "Ne simule pas la rejouabilité physique, vérifie la complétude de la trace.",
+          "hypotheses": "Format du journal conforme au standard JSON-Audit-ESVP.",
+          "exclusions": "Traces temporaires de débogage local."
+        },
+        "execution": {
+          "inputs": [
+            "audit_trail_file"
+          ],
+          "preconditions": [
+            "PROOF.TRACEABILITY (CSA-341)"
+          ],
+          "dependencies": [
+            "CSA-341"
+          ],
+          "method": "Contrôle de complétude de la tuplet {Version Moteur, Grain d'entrée, Seed, Version Doctrine}.",
+          "parameters": {},
+          "postconditions": [
+            "replayability_assured"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED"
+          ],
+          "justification": "Tous les éléments requis pour réexécuter à l'identique sont consignés.",
+          "proofs_used": [
+            "audit_trail_file"
+          ],
+          "rules_applied": [
+            "RMCS-AUDIT-01"
+          ],
+          "confidence_level": 1.0,
+          "exceptions": [
+            {
+              "code": "AUDIT_MISSING_SEED",
+              "description": "Variable d'environnement manquante dans la trace."
+            }
+          ]
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003"
+          ],
+          "rmcs_ids": [
+            "RMCS-AUDIT-01"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-AUDIT-01"
+          ]
+        },
+        "history": []
+      },
+      "is_valid": true
+    },
+    "CSA-101": {
+      "id": "CSA-101",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_100_crypto.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-101",
+          "semantic_code": "CRYPTO.INTEGRITY.VERIFY",
+          "official_name": "Vérification de l'intégrité cryptographique",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-100",
+          "sub_family": "Intégrité",
+          "domains": [
+            "ESVP",
+            "RMCS"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "execution": {
+          "inputs": [
+            "scientific_object",
+            "reference_hash",
+            "declared_algorithm"
+          ],
+          "preconditions": [
+            "object_accessible",
+            "hash_available"
+          ],
+          "dependencies": []
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED",
+            "NOT_APPLICABLE",
+            "ERROR"
+          ],
+          "on_failure": "BLOCK_DVS"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-102": {
+      "id": "CSA-102",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_100_crypto.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-102",
+          "semantic_code": "CRYPTO.SIGNATURE.VERIFY",
+          "official_name": "Vérification de la signature numérique",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-100",
+          "sub_family": "Signature",
+          "domains": [
+            "ESVP",
+            "RMCS"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "execution": {
+          "dependencies": [
+            "CSA-101"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED",
+            "NOT_APPLICABLE"
+          ],
+          "on_failure": "SUSPEND_VALIDATION"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-511": {
+      "id": "CSA-511",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_500_methodology.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-511",
+          "semantic_code": "METHOD.SELECTION.VALID",
+          "official_name": "Vérification de la méthode applicable",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-500",
+          "sub_family": "CSA-510 Sélection",
+          "domains": [
+            "OSA",
+            "P7"
+          ],
+          "criticality": "MAJOR"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-561": {
+      "id": "CSA-561",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_500_methodology.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-561",
+          "semantic_code": "METHOD.REPRODUCIBILITY",
+          "official_name": "Vérification de la reproductibilité méthodologique",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-500",
+          "sub_family": "CSA-560 Reproductibilité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-311": {
+      "id": "CSA-311",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_300_proofs.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-311",
+          "semantic_code": "PROOF.EXISTS",
+          "official_name": "Vérification de l'existence d'une preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-310 Existence",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-321": {
+      "id": "CSA-321",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_300_proofs.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-321",
+          "semantic_code": "PROOF.AUTHENTIC",
+          "official_name": "Vérification de l'authenticité de la preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-320 Authenticité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-351": {
+      "id": "CSA-351",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_300_proofs.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-351",
+          "semantic_code": "PROOF.QUALITY",
+          "official_name": "Évaluation de la qualité scientifique de la preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-350 Qualité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "MAJOR"
+        }
+      },
+      "is_valid": true
+    },
+    "CSA-801": {
+      "id": "CSA-801",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_800_governance.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-801",
+          "semantic_code": "GOV.FOUR_EYES.PRINCIPLE",
+          "official_name": "Contrôle du principe de validation à Quatre-Yeux",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-800",
+          "sub_family": "Quatre-Yeux",
+          "domains": [
+            "RMCS",
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "governance": {
+          "author": "Comité de Gouvernance Scientifique",
+          "reviewer": "Secrétariat Général Scientifique",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "HIGH",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "Garantir qu'une décision ou révision exige l'intervention d'au moins deux validateurs distincts et habilités.",
+          "scope": "Validation finale des DVS et dérogations normatives.",
+          "limits": "Ne s'applique pas aux contrôles entièrement automatisés.",
+          "hypotheses": "Les identités des acteurs sont authentifiées via PKI.",
+          "exclusions": "Relectures purement informatives."
+        },
+        "execution": {
+          "inputs": [
+            "approval_signatures_list"
+          ],
+          "preconditions": [
+            "CRYPTO.SIGNER.AUTHORITY (CSA-103)"
+          ],
+          "dependencies": [
+            "CSA-103"
+          ],
+          "method": "Analyse de disjonction des identités : Validateur_A ≠ Validateur_B, avec rôles disjoints.",
+          "parameters": {},
+          "postconditions": [
+            "four_eyes_confirmed"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED"
+          ],
+          "justification": "Au moins deux signatures distinctes d'experts qualifiés sont présentes.",
+          "proofs_used": [
+            "approval_signatures_list"
+          ],
+          "rules_applied": [
+            "RMCS-GOV-04"
+          ],
+          "confidence_level": 1.0,
+          "exceptions": [
+            {
+              "code": "GOV_SINGLE_SIGNER",
+              "description": "Une seule personne a visé le dossier."
+            }
+          ]
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003"
+          ],
+          "rmcs_ids": [
+            "RMCS-GOV-04"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-GOV-02"
+          ]
+        },
+        "history": []
+      },
+      "is_valid": true
+    },
+    "CSA-701": {
+      "id": "CSA-701",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_700_coherence.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-701",
+          "semantic_code": "COHERENCE.LOGICAL.CHECK",
+          "official_name": "Vérification de la cohérence logique inter-constats",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-700",
+          "sub_family": "Logique",
+          "domains": [
+            "ESVP",
+            "RMCS"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "governance": {
+          "author": "Groupe Transversal de Logique Scientifique",
+          "reviewer": "Unité de Validation ESVP",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "HIGH",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "Détecter toute contradiction formelle entre deux affirmations validées du dossier.",
+          "scope": "Ensemble des propositions d'un Dossier de Validation Scientifique (DVS).",
+          "limits": "Limité aux règles de logique formelle du premier ordre.",
+          "hypotheses": "Les faits sont traduits en prédicats normés.",
+          "exclusions": "Incohérences de nuance de vocabulaire."
+        },
+        "execution": {
+          "inputs": [
+            "dvs_predicate_matrix"
+          ],
+          "preconditions": [
+            "PROOF.COMPLETENESS (CSA-361)"
+          ],
+          "dependencies": [
+            "CSA-361"
+          ],
+          "method": "Analyse de SAT-solveur sur l'ensemble des prédicats.",
+          "parameters": {
+            "max_recursion_depth": 100
+          },
+          "postconditions": [
+            "no_logical_contradiction"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED"
+          ],
+          "justification": "Aucun sous-ensemble d'affirmations ne produit de contradiction p ∧ ¬p.",
+          "proofs_used": [
+            "dvs_predicate_matrix"
+          ],
+          "rules_applied": [
+            "RMCS-LOGIC-01"
+          ],
+          "confidence_level": 1.0,
+          "exceptions": [
+            {
+              "code": "LOGIC_CONTRADICTION",
+              "description": "Deux constats du dossier se contredisent."
+            }
+          ]
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003"
+          ],
+          "rmcs_ids": [
+            "RMCS-LOGIC-01"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-LOGIC-01"
+          ]
+        },
+        "history": []
+      },
+      "is_valid": true
+    },
+    "CSA-702": {
+      "id": "CSA-702",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_700_coherence.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-702",
+          "semantic_code": "COHERENCE.TEMPORAL.SEQUENCE",
+          "official_name": "Contrôle de la cohérence de séquencement temporel",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-700",
+          "sub_family": "Temporelle",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "MAJOR"
+        },
+        "governance": {
+          "author": "Groupe Transversal de Logique Scientifique",
+          "reviewer": "Unité de Validation ESVP",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "MEDIUM",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "S'assurer que les événements et preuves respectent la flèche du temps (antériorité des causes sur les effets).",
+          "scope": "Horodatages des preuves et jalons de validation.",
+          "limits": "S'appuie sur des horodatages certifiés.",
+          "hypotheses": "Horodatage ISO 8601 UTC présent.",
+          "exclusions": "Rapports sans composante temporelle."
+        },
+        "execution": {
+          "inputs": [
+            "events_timeline"
+          ],
+          "preconditions": [
+            "PROOF.TEMPORAL.VALIDITY (CSA-381)"
+          ],
+          "dependencies": [
+            "CSA-381"
+          ],
+          "method": "Vérification d'ordre strictement monotone croissant sur la chaîne causale.",
+          "parameters": {},
+          "postconditions": [
+            "timeline_valid"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED"
+          ],
+          "justification": "Chaque preuve antécède sa validation associée.",
+          "proofs_used": [
+            "events_timeline"
+          ],
+          "rules_applied": [
+            "RMCS-TIME-02"
+          ],
+          "confidence_level": 1.0,
+          "exceptions": []
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003"
+          ],
+          "rmcs_ids": [
+            "RMCS-TIME-02"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-TIME-01"
+          ]
+        },
+        "history": []
+      },
+      "is_valid": true
+    },
+    "CSA-601": {
+      "id": "CSA-601",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_600_engines.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-601",
+          "semantic_code": "ENGINES.ISA.COMPUTE",
+          "official_name": "Vérification de la conformité des calculs Moteur ISA",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-600",
+          "sub_family": "ISA",
+          "domains": [
+            "ISA",
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        },
+        "governance": {
+          "author": "Comité Moteurs Scientifiques",
+          "reviewer": "Unité de Validation ESVP",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "HIGH",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "Garantir que la production du moteur ISA respecte le modèle mathématique et algorithmique agréé.",
+          "scope": "Résultats d'analyse vectorielle et calculs d'indicateurs ISA.",
+          "limits": "Ne valide pas la recevabilité des données d'entrée (couvertes par CSA-300).",
+          "hypotheses": "Les algorithmes ISA sous-jacents sont certifiés v2.4+.",
+          "exclusions": "Avis d'expert non quantitatifs."
+        },
+        "execution": {
+          "inputs": [
+            "isa_output_dataset",
+            "isa_model_config"
+          ],
+          "preconditions": [
+            "PROOF.EXISTS (CSA-311)",
+            "PROOF.INTEGRITY (CSA-331)"
+          ],
+          "dependencies": [
+            "CSA-101",
+            "CSA-311",
+            "CSA-331"
+          ],
+          "method": "Rejeu de la formule d'agregation ISA et comparaison d'empreinte matricielle.",
+          "parameters": {
+            "tolerance_delta": 0.00001
+          },
+          "postconditions": [
+            "isa_metrics_validated"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED",
+            "WARNING",
+            "ERROR"
+          ],
+          "justification": "Ecart entre la valeur recalculée et la valeur soumise inférieur à la tolérance.",
+          "proofs_used": [
+            "isa_execution_trace"
+          ],
+          "rules_applied": [
+            "RMCS-RULE-ISA-01"
+          ],
+          "confidence_level": 0.99,
+          "exceptions": [
+            {
+              "code": "ISA_ERR_DELTA_EXCEEDED",
+              "description": "L'écart de calcul dépasse le seuil toléré."
+            }
+          ]
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003",
+            "RMCS-REF-ISA-2025"
+          ],
+          "rmcs_ids": [
+            "RMCS-RULE-ISA-01"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-MATH-04"
+          ]
+        },
+        "history": [
+          {
+            "version": "1.0.0",
+            "date": "2026-03-01",
+            "nature": "Création initiale",
+            "justification": "Adoption du registre ROCSA v1",
+            "approved_by": "Conseil Scientifique"
+          }
+        ]
+      },
+      "is_valid": true
+    },
+    "CSA-602": {
+      "id": "CSA-602",
+      "file_path": "/mnt/data/osa-scientific-validator-dev/rocsa-generator/src/rocsa_generator/definitions/catalog/csa_600_engines.json",
+      "definition": {
+        "identity": {
+          "csa_id": "CSA-602",
+          "semantic_code": "ENGINES.POA.VALIDATE",
+          "official_name": "Validation des productions du moteur POA",
+          "version": "1.0.0",
+          "status": "ACTIVE",
+          "created_at": "2026-03-01T00:00:00Z",
+          "effective_date": "2026-03-15T00:00:00Z"
+        },
+        "classification": {
+          "family": "CSA-600",
+          "sub_family": "POA",
+          "domains": [
+            "POA",
+            "ESVP"
+          ],
+          "criticality": "MAJOR"
+        },
+        "governance": {
+          "author": "Comité Moteurs Scientifiques",
+          "reviewer": "Unité de Validation ESVP",
+          "authority": "Autorité Scientifique RMCS",
+          "doctrinal_version": "P7-2026-003",
+          "document_status": "ACTIVE",
+          "criticality_level": "MEDIUM",
+          "stability_level": "STABLE"
+        },
+        "scientific_description": {
+          "objective": "Contrôler la conformité de l'arbre d'objectifs généré par le moteur POA.",
+          "scope": "Modèles d'objectifs opérationnels et d'alignement.",
+          "limits": "Ne juge pas de l'opportunité stratégique.",
+          "hypotheses": "Arbre formellement structuré sous syntaxe compatible.",
+          "exclusions": "Note de synthèse manuelle."
+        },
+        "execution": {
+          "inputs": [
+            "poa_tree_json"
+          ],
+          "preconditions": [
+            "DOC.IDENTITY.EXISTS (CSA-211)"
+          ],
+          "dependencies": [
+            "CSA-211"
+          ],
+          "method": "Validation de graphe DAG sans cycle d'objectifs.",
+          "parameters": {},
+          "postconditions": [
+            "poa_structure_valid"
+          ]
+        },
+        "results": {
+          "states": [
+            "PASSED",
+            "FAILED"
+          ],
+          "justification": "Structure acyclique conforme aux règles POA.",
+          "proofs_used": [
+            "poa_graph_export"
+          ],
+          "rules_applied": [
+            "RMCS-RULE-POA-02"
+          ],
+          "confidence_level": 0.95,
+          "exceptions": []
+        },
+        "references": {
+          "doctrinal_documents": [
+            "P7-2026-003"
+          ],
+          "rmcs_ids": [
+            "RMCS-RULE-POA-02"
+          ],
+          "esvp_requirements": [
+            "ESVP-REQ-GRAPH-01"
+          ]
+        },
+        "history": []
+      },
+      "is_valid": true
+    }
+  }
+}

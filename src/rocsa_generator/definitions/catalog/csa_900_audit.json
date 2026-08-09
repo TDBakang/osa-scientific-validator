@@ -1,0 +1,59 @@
+[
+  {
+    "identity": {
+      "csa_id": "CSA-901",
+      "semantic_code": "AUDIT.LOG.REPLAYABILITY",
+      "official_name": "Contrôle de la rejouabilité intégrale des exécutions",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "created_at": "2026-03-01T00:00:00Z",
+      "effective_date": "2026-03-15T00:00:00Z"
+    },
+    "classification": {
+      "family": "CSA-900",
+      "sub_family": "Journalisation",
+      "domains": ["ESVP", "RMCS"],
+      "criticality": "CRITICAL"
+    },
+    "governance": {
+      "author": "Cellule d'Audit et Sécurité",
+      "reviewer": "Unité de Validation ESVP",
+      "authority": "Autorité Scientifique RMCS",
+      "doctrinal_version": "P7-2026-003",
+      "document_status": "ACTIVE",
+      "criticality_level": "HIGH",
+      "stability_level": "STABLE"
+    },
+    "scientific_description": {
+      "objective": "Vérifier que les journaux d'exécution contiennent l'ensemble des paramètres permettant la rejouabilité déterministe.",
+      "scope": "Logs d'exécution RMCS et traces de calcul.",
+      "limits": "Ne simule pas la rejouabilité physique, vérifie la complétude de la trace.",
+      "hypotheses": "Format du journal conforme au standard JSON-Audit-ESVP.",
+      "exclusions": "Traces temporaires de débogage local."
+    },
+    "execution": {
+      "inputs": ["audit_trail_file"],
+      "preconditions": ["PROOF.TRACEABILITY (CSA-341)"],
+      "dependencies": ["CSA-341"],
+      "method": "Contrôle de complétude de la tuplet {Version Moteur, Grain d'entrée, Seed, Version Doctrine}.",
+      "parameters": {},
+      "postconditions": ["replayability_assured"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED"],
+      "justification": "Tous les éléments requis pour réexécuter à l'identique sont consignés.",
+      "proofs_used": ["audit_trail_file"],
+      "rules_applied": ["RMCS-AUDIT-01"],
+      "confidence_level": 1.0,
+      "exceptions": [
+        {"code": "AUDIT_MISSING_SEED", "description": "Variable d'environnement manquante dans la trace."}
+      ]
+    },
+    "references": {
+      "doctrinal_documents": ["P7-2026-003"],
+      "rmcs_ids": ["RMCS-AUDIT-01"],
+      "esvp_requirements": ["ESVP-REQ-AUDIT-01"]
+    },
+    "history": []
+  }
+]

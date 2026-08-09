@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+rocsa_generator.egg-info/PKG-INFO
+rocsa_generator.egg-info/SOURCES.txt
+rocsa_generator.egg-info/dependency_links.txt
+rocsa_generator.egg-info/entry_points.txt
+rocsa_generator.egg-info/requires.txt
+rocsa_generator.egg-info/top_level.txt

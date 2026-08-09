@@ -1,0 +1,44 @@
+{
+  "request_id": "048d9f97-c561-5240-ac9b-327a80e8aeb5",
+  "name": "csa_500_methodology",
+  "format": "json",
+  "parameters": {
+    "controls": [
+      {
+        "identity": {
+          "csa_id": "CSA-511",
+          "semantic_code": "METHOD.SELECTION.VALID",
+          "official_name": "Vérification de la méthode applicable",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-500",
+          "sub_family": "CSA-510 Sélection",
+          "domains": [
+            "OSA",
+            "P7"
+          ],
+          "criticality": "MAJOR"
+        }
+      },
+      {
+        "identity": {
+          "csa_id": "CSA-561",
+          "semantic_code": "METHOD.REPRODUCIBILITY",
+          "official_name": "Vérification de la reproductibilité méthodologique",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-500",
+          "sub_family": "CSA-560 Reproductibilité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      }
+    ]
+  }
+}

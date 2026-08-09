@@ -1,0 +1,114 @@
+[
+  {
+    "identity": {
+      "csa_id": "CSA-701",
+      "semantic_code": "COHERENCE.LOGICAL.CHECK",
+      "official_name": "Vérification de la cohérence logique inter-constats",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "created_at": "2026-03-01T00:00:00Z",
+      "effective_date": "2026-03-15T00:00:00Z"
+    },
+    "classification": {
+      "family": "CSA-700",
+      "sub_family": "Logique",
+      "domains": ["ESVP", "RMCS"],
+      "criticality": "CRITICAL"
+    },
+    "governance": {
+      "author": "Groupe Transversal de Logique Scientifique",
+      "reviewer": "Unité de Validation ESVP",
+      "authority": "Autorité Scientifique RMCS",
+      "doctrinal_version": "P7-2026-003",
+      "document_status": "ACTIVE",
+      "criticality_level": "HIGH",
+      "stability_level": "STABLE"
+    },
+    "scientific_description": {
+      "objective": "Détecter toute contradiction formelle entre deux affirmations validées du dossier.",
+      "scope": "Ensemble des propositions d'un Dossier de Validation Scientifique (DVS).",
+      "limits": "Limité aux règles de logique formelle du premier ordre.",
+      "hypotheses": "Les faits sont traduits en prédicats normés.",
+      "exclusions": "Incohérences de nuance de vocabulaire."
+    },
+    "execution": {
+      "inputs": ["dvs_predicate_matrix"],
+      "preconditions": ["PROOF.COMPLETENESS (CSA-361)"],
+      "dependencies": ["CSA-361"],
+      "method": "Analyse de SAT-solveur sur l'ensemble des prédicats.",
+      "parameters": {"max_recursion_depth": 100},
+      "postconditions": ["no_logical_contradiction"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED"],
+      "justification": "Aucun sous-ensemble d'affirmations ne produit de contradiction p ∧ ¬p.",
+      "proofs_used": ["dvs_predicate_matrix"],
+      "rules_applied": ["RMCS-LOGIC-01"],
+      "confidence_level": 1.0,
+      "exceptions": [
+        {"code": "LOGIC_CONTRADICTION", "description": "Deux constats du dossier se contredisent."}
+      ]
+    },
+    "references": {
+      "doctrinal_documents": ["P7-2026-003"],
+      "rmcs_ids": ["RMCS-LOGIC-01"],
+      "esvp_requirements": ["ESVP-REQ-LOGIC-01"]
+    },
+    "history": []
+  },
+  {
+    "identity": {
+      "csa_id": "CSA-702",
+      "semantic_code": "COHERENCE.TEMPORAL.SEQUENCE",
+      "official_name": "Contrôle de la cohérence de séquencement temporel",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "created_at": "2026-03-01T00:00:00Z",
+      "effective_date": "2026-03-15T00:00:00Z"
+    },
+    "classification": {
+      "family": "CSA-700",
+      "sub_family": "Temporelle",
+      "domains": ["ESVP"],
+      "criticality": "MAJOR"
+    },
+    "governance": {
+      "author": "Groupe Transversal de Logique Scientifique",
+      "reviewer": "Unité de Validation ESVP",
+      "authority": "Autorité Scientifique RMCS",
+      "doctrinal_version": "P7-2026-003",
+      "document_status": "ACTIVE",
+      "criticality_level": "MEDIUM",
+      "stability_level": "STABLE"
+    },
+    "scientific_description": {
+      "objective": "S'assurer que les événements et preuves respectent la flèche du temps (antériorité des causes sur les effets).",
+      "scope": "Horodatages des preuves et jalons de validation.",
+      "limits": "S'appuie sur des horodatages certifiés.",
+      "hypotheses": "Horodatage ISO 8601 UTC présent.",
+      "exclusions": "Rapports sans composante temporelle."
+    },
+    "execution": {
+      "inputs": ["events_timeline"],
+      "preconditions": ["PROOF.TEMPORAL.VALIDITY (CSA-381)"],
+      "dependencies": ["CSA-381"],
+      "method": "Vérification d'ordre strictement monotone croissant sur la chaîne causale.",
+      "parameters": {},
+      "postconditions": ["timeline_valid"]
+    },
+    "results": {
+      "states": ["PASSED", "FAILED"],
+      "justification": "Chaque preuve antécède sa validation associée.",
+      "proofs_used": ["events_timeline"],
+      "rules_applied": ["RMCS-TIME-02"],
+      "confidence_level": 1.0,
+      "exceptions": []
+    },
+    "references": {
+      "doctrinal_documents": ["P7-2026-003"],
+      "rmcs_ids": ["RMCS-TIME-02"],
+      "esvp_requirements": ["ESVP-REQ-TIME-01"]
+    },
+    "history": []
+  }
+]

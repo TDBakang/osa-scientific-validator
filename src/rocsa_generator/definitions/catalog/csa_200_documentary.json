@@ -1,0 +1,47 @@
+[
+  {
+    "identity": {
+      "csa_id": "CSA-211",
+      "semantic_code": "DOC.IDENTITY.EXISTS",
+      "official_name": "Vérification de l'existence documentaire",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    "classification": {
+      "family": "CSA-200",
+      "sub_family": "CSA-210 Identification",
+      "domains": ["RMCS", "P7"],
+      "criticality": "CRITICAL"
+    }
+  },
+  {
+    "identity": {
+      "csa_id": "CSA-221",
+      "semantic_code": "DOC.STATUS.ACTIVE",
+      "official_name": "Vérification du statut documentaire",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    "classification": {
+      "family": "CSA-200",
+      "sub_family": "CSA-220 Statut",
+      "domains": ["RMCS"],
+      "criticality": "CRITICAL"
+    }
+  },
+  {
+    "identity": {
+      "csa_id": "CSA-232",
+      "semantic_code": "DOC.VERSION.APPLICABLE",
+      "official_name": "Vérification de la version applicable",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    "classification": {
+      "family": "CSA-200",
+      "sub_family": "CSA-230 Versionnement",
+      "domains": ["RMCS"],
+      "criticality": "MAJOR"
+    }
+  }
+]

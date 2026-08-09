@@ -1,0 +1,60 @@
+{
+  "request_id": "aca3528a-c535-59b9-9937-bf9d89d7e2df",
+  "name": "csa_300_proofs",
+  "format": "json",
+  "parameters": {
+    "controls": [
+      {
+        "identity": {
+          "csa_id": "CSA-311",
+          "semantic_code": "PROOF.EXISTS",
+          "official_name": "Vérification de l'existence d'une preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-310 Existence",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      {
+        "identity": {
+          "csa_id": "CSA-321",
+          "semantic_code": "PROOF.AUTHENTIC",
+          "official_name": "Vérification de l'authenticité de la preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-320 Authenticité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      {
+        "identity": {
+          "csa_id": "CSA-351",
+          "semantic_code": "PROOF.QUALITY",
+          "official_name": "Évaluation de la qualité scientifique de la preuve",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-300",
+          "sub_family": "CSA-350 Qualité",
+          "domains": [
+            "ESVP"
+          ],
+          "criticality": "MAJOR"
+        }
+      }
+    ]
+  }
+}

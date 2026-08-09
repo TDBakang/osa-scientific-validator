@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FN-CSA Canonical Schema",
+  "description": "Schéma de validation d'une Fiche Normative de Contrôle Scientifique Atomique (ROCSA Chapitre II)",
+  "type": "object",
+  "required": [
+    "identity",
+    "classification",
+    "governance",
+    "scientific_description",
+    "execution",
+    "results",
+    "references",
+    "history"
+  ],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["csa_id", "semantic_code", "official_name", "version", "status"],
+      "properties": {
+        "csa_id": { "type": "string", "pattern": "^CSA-[0-9]{3}$" },
+        "semantic_code": { "type": "string" },
+        "official_name": { "type": "string" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "status": { "type": "string", "enum": ["ACTIVE", "ACTIVE_WITH_RESERVATIONS", "RETIRED", "DRAFT"] }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": ["family", "sub_family", "domains", "criticality"],
+      "properties": {
+        "family": { "type": "string" },
+        "sub_family": { "type": "string" },
+        "domains": { "type": "array", "items": { "type": "string" } },
+        "criticality": { "type": "string", "enum": ["CRITICAL", "MAJOR", "MINOR", "INFORMATIVE"] }
+      }
+    },
+    "governance": { "type": "object" },
+    "scientific_description": { "type": "object" },
+    "execution": { "type": "object" },
+    "results": { "type": "object" },
+    "references": { "type": "object" },
+    "history": { "type": "array" }
+  }
+}

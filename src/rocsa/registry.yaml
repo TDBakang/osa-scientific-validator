@@ -1,0 +1,99 @@
+100_CRYPTO:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.crypto.csa_001
+  semantic_code: CSA-CSA_100_CRYPTO-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.crypto.csa_002
+  semantic_code: CSA-CSA_100_CRYPTO-02
+  title: "Contr\xF4le sans titre"
+200_DOCUMENTARY:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.documentary.csa_001
+  semantic_code: CSA-CSA_200_DOCUMENTARY-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.documentary.csa_002
+  semantic_code: CSA-CSA_200_DOCUMENTARY-02
+  title: "Contr\xF4le sans titre"
+- class_name: CSA003
+  control_id: CSA-003
+  module: rocsa.documentary.csa_003
+  semantic_code: CSA-CSA_200_DOCUMENTARY-03
+  title: "Contr\xF4le sans titre"
+300_PROOFS:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.proofs.csa_001
+  semantic_code: CSA-CSA_300_PROOFS-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.proofs.csa_002
+  semantic_code: CSA-CSA_300_PROOFS-02
+  title: "Contr\xF4le sans titre"
+- class_name: CSA003
+  control_id: CSA-003
+  module: rocsa.proofs.csa_003
+  semantic_code: CSA-CSA_300_PROOFS-03
+  title: "Contr\xF4le sans titre"
+400_DOCTRINAL:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.doctrinal.csa_001
+  semantic_code: CSA-CSA_400_DOCTRINAL-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.doctrinal.csa_002
+  semantic_code: CSA-CSA_400_DOCTRINAL-02
+  title: "Contr\xF4le sans titre"
+500_METHODOLOGY:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.methodology.csa_001
+  semantic_code: CSA-CSA_500_METHODOLOGY-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.methodology.csa_002
+  semantic_code: CSA-CSA_500_METHODOLOGY-02
+  title: "Contr\xF4le sans titre"
+600_ENGINES:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.engines.csa_001
+  semantic_code: CSA-CSA_600_ENGINES-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.engines.csa_002
+  semantic_code: CSA-CSA_600_ENGINES-02
+  title: "Contr\xF4le sans titre"
+700_COHERENCE:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.coherence.csa_001
+  semantic_code: CSA-CSA_700_COHERENCE-01
+  title: "Contr\xF4le sans titre"
+- class_name: CSA002
+  control_id: CSA-002
+  module: rocsa.coherence.csa_002
+  semantic_code: CSA-CSA_700_COHERENCE-02
+  title: "Contr\xF4le sans titre"
+800_GOVERNANCE:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.governance.csa_001
+  semantic_code: CSA-CSA_800_GOVERNANCE-01
+  title: "Contr\xF4le sans titre"
+900_AUDIT:
+- class_name: CSA001
+  control_id: CSA-001
+  module: rocsa.audit.csa_001
+  semantic_code: CSA-CSA_900_AUDIT-01
+  title: "Contr\xF4le sans titre"

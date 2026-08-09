@@ -1,0 +1,42 @@
+"""
+Code généré automatiquement par ROCSA Generator.
+Nom de la définition : {{ name }}
+ID de la requête : {{ request_id }}
+Date de génération : {{ datetime.now().strftime("%Y-%m-%d %H:%M:%S") }}
+"""
+
+import logging
+from typing import Any, Dict, Optional
+
+logger = logging.getLogger(__name__)
+
+
+class {{ name | camel_case }}Control:
+    """Implémentation du contrôle atomique : {{ name }}."""
+
+    def __init__(self, parameters: Optional[Dict[str, Any]] = None):
+        self.name = "{{ name }}"
+        self.request_id = "{{ request_id }}"
+        self.parameters = parameters or {{ parameters | default({}, true) }}
+
+    def execute(self) -> Dict[str, Any]:
+        """Exécute la logique du contrôle scientifique."""
+        logger.info(f"Exécution du contrôle '{self.name}' [ID: {self.request_id}]...")
+        
+        # Logique générée dynamiquement
+        {% for key, value in parameters.items() %}
+        # Paramètre : {{ key }}
+        {{ key | snake_case }} = self.parameters.get("{{ key }}", {{ value | repr }})
+        {% endfor %}
+
+        return {
+            "status": "SUCCESS",
+            "control_name": self.name,
+            "processed_parameters": len(self.parameters),
+        }
+
+
+def run_{{ name | snake_case }}() -> Dict[str, Any]:
+    """Point d'entrée utilitaire pour exécuter le contrôle directement."""
+    instance = {{ name | camel_case }}Control()
+    return instance.execute()

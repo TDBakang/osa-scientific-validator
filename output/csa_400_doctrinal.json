@@ -1,0 +1,45 @@
+{
+  "request_id": "ff0a4715-4cc1-506f-ae22-e1cf31377fc4",
+  "name": "csa_400_doctrinal",
+  "format": "json",
+  "parameters": {
+    "controls": [
+      {
+        "identity": {
+          "csa_id": "CSA-411",
+          "semantic_code": "DOCTRINE.APPLICABLE",
+          "official_name": "Vérification de l'applicabilité d'une règle",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-400",
+          "sub_family": "CSA-410 Applicabilité",
+          "domains": [
+            "RMCS",
+            "P7"
+          ],
+          "criticality": "CRITICAL"
+        }
+      },
+      {
+        "identity": {
+          "csa_id": "CSA-431",
+          "semantic_code": "DOCTRINE.HIERARCHY.CHECK",
+          "official_name": "Vérification de la hiérarchie normative",
+          "version": "1.0.0",
+          "status": "ACTIVE"
+        },
+        "classification": {
+          "family": "CSA-400",
+          "sub_family": "CSA-430 Hiérarchie",
+          "domains": [
+            "RMCS",
+            "ESVP"
+          ],
+          "criticality": "CRITICAL"
+        }
+      }
+    ]
+  }
+}

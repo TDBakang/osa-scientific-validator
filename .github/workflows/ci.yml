@@ -1,0 +1,63 @@
+name: ROCSA Compiler & Runtime CI/CD
+
+on:
+  push:
+    branches: [ "main", "master", "develop" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configuration Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: 🛠️ Installation des dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pyyaml pydantic jinja2 typer rich
+          pip install -e .
+
+      - name: ⚙️ Compilation du SDK ROCSA
+        run: |
+          python -c "
+          from pathlib import Path
+          from rocsa_generator import RocsaRegistry, RocsaEngine
+          registry = RocsaRegistry()
+          registry.scan_directory(Path('src/rocsa_generator/definitions/catalog'))
+          engine = RocsaEngine(output_dir='./src')
+          engine.generate_sdk(registry, target_dir='./src/rocsa')
+          "
+
+      - name: 🧪 Exécution de la suite de tests Pytest
+        run: |
+          python -m pytest -v
+
+      - name: 🚀 Test d'Exécution du Runtime RMCS (Dry-Run)
+        run: |
+          python -c "
+          from rocsa.integration import RMCSValidatorFacade
+          from rocsa.core import CSAContext
+          v = RMCSValidatorFacade.load_sdk('./src/rocsa')
+          ctx = CSAContext(execution_id='CI-RUN', target_name='GitHub Actions Test')
+          rep = v.audit_all(ctx)
+          print(rep.summary_text())
+          assert rep.total_controls > 0
+          "
+
+      - name: 🐳 Construction de l'image Docker
+        run: |
+          docker build -t rocsa-runtime:${{ github.sha }} .
+
+      - name: 🧪 Test d'exécutabilité du conteneur Docker
+        run: |
+          docker run --rm rocsa-runtime:${{ github.sha }}
