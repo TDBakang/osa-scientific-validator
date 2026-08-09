@@ -135,6 +135,52 @@
       "title": "Execution",
       "type": "object"
     },
+    "FNCsaDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "governance": {
+          "$ref": "#/$defs/Governance"
+        },
+        "scientific_description": {
+          "$ref": "#/$defs/ScientificDescription"
+        },
+        "execution": {
+          "$ref": "#/$defs/Execution"
+        },
+        "results": {
+          "$ref": "#/$defs/Results"
+        },
+        "references": {
+          "$ref": "#/$defs/References"
+        },
+        "history": {
+          "items": {
+            "$ref": "#/$defs/HistoryEntry"
+          },
+          "minItems": 1,
+          "title": "History",
+          "type": "array"
+        }
+      },
+      "required": [
+        "identity",
+        "classification",
+        "governance",
+        "scientific_description",
+        "execution",
+        "results",
+        "references",
+        "history"
+      ],
+      "title": "FNCsaDefinition",
+      "type": "object"
+    },
     "FailurePrescription": {
       "enum": [
         "NONE",
@@ -526,47 +572,25 @@
   },
   "additionalProperties": false,
   "properties": {
-    "identity": {
-      "$ref": "#/$defs/Identity"
+    "catalog_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$",
+      "title": "Catalog Version",
+      "type": "string"
     },
-    "classification": {
-      "$ref": "#/$defs/Classification"
-    },
-    "governance": {
-      "$ref": "#/$defs/Governance"
-    },
-    "scientific_description": {
-      "$ref": "#/$defs/ScientificDescription"
-    },
-    "execution": {
-      "$ref": "#/$defs/Execution"
-    },
-    "results": {
-      "$ref": "#/$defs/Results"
-    },
-    "references": {
-      "$ref": "#/$defs/References"
-    },
-    "history": {
+    "controls": {
       "items": {
-        "$ref": "#/$defs/HistoryEntry"
+        "$ref": "#/$defs/FNCsaDefinition"
       },
       "minItems": 1,
-      "title": "History",
+      "title": "Controls",
       "type": "array"
     }
   },
   "required": [
-    "identity",
-    "classification",
-    "governance",
-    "scientific_description",
-    "execution",
-    "results",
-    "references",
-    "history"
+    "catalog_version",
+    "controls"
   ],
-  "title": "FN-CSA Canonical Schema",
+  "title": "FN-CSA Catalog Schema",
   "type": "object",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

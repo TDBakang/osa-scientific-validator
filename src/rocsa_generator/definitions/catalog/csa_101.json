@@ -1,0 +1,52 @@
+{
+  "identity": {
+    "csa_id": "CSA-101",
+    "semantic_code": "CRYPTO.INTEGRITY.VERIFY",
+    "official_name": "Vérification de l'intégrité cryptographique",
+    "version": "1.0.0-draft",
+    "status": "PROPOSED"
+  },
+  "classification": {
+    "family": "CSA-100",
+    "sub_family": "Intégrité",
+    "domains": ["ESVP", "RMCS"],
+    "criticality": "CRITICAL"
+  },
+  "governance": {
+    "author": "Autorité scientifique OSA",
+    "reviewer": "Comité scientifique OSA",
+    "authority": "Observatoire de la Souveraineté Africaine",
+    "doctrinal_version": "1.0-draft",
+    "document_status": "PROPOSED",
+    "criticality_level": "CRITICAL",
+    "stability_level": "DRAFT"
+  },
+  "scientific_description": {
+    "objective": "Vérifier qu'un objet scientifique ou documentaire soumis au contrôle présente une intégrité conforme aux éléments de preuve d'intégrité déclarés et disponibles au moment de l'évaluation.",
+    "scope": ["Objets numériques admis dans le périmètre scientifique du RMCS", "Documents et artefacts associés à une preuve d'intégrité vérifiable", "Fichiers sources, livrables ou éléments de preuve dont l'identité numérique doit être contrôlée"],
+    "limits": ["Le contrôle d'intégrité ne démontre pas à lui seul la véracité scientifique du contenu", "Le contrôle ne démontre pas l'identité de l'auteur sans mécanisme distinct d'authentification ou de signature", "Le contrôle ne permet pas de conclure lorsque la preuve de référence est absente, inexploitable ou non recevable", "Le contrôle ne préjuge pas de la conformité doctrinale, méthodologique ou réglementaire de l'objet"],
+    "hypotheses": ["L'objet soumis au contrôle est accessible dans une forme stable et exploitable", "La preuve d'intégrité de référence est disponible et rattachable sans ambiguïté à l'objet contrôlé", "Le mécanisme cryptographique utilisé est explicitement déclaré par le contexte ou la preuve", "La comparaison peut être réalisée sans transformation silencieuse de l'objet"],
+    "exclusions": ["Validation du contenu scientifique", "Évaluation de la qualité méthodologique", "Authentification de l'auteur", "Vérification de signature électronique", "Horodatage qualifié", "Déduction automatique d'un algorithme cryptographique absent", "Réparation ou modification automatique de l'objet contrôlé"]
+  },
+  "execution": {
+    "inputs": ["scientific_object", "reference_hash", "declared_algorithm"],
+    "preconditions": ["object_accessible", "hash_available"],
+    "dependencies": []
+  },
+  "results": {
+    "states": ["PASSED", "FAILED", "NOT_APPLICABLE", "ERROR"],
+    "on_failure": "BLOCK_DVS"
+  },
+  "references": {
+    "doctrinal_documents": [],
+    "rmcs_ids": [],
+    "esvp_requirements": []
+  },
+  "history": [{
+    "version": "1.0-draft",
+    "date": "2026-08-09",
+    "nature": "CREATION",
+    "justification": "Création de la définition doctrinale complète de CSA-101 dans le cadre de la phase 2.3-B2, sans implémentation cryptographique.",
+    "approved_by": "PENDING_SCIENTIFIC_AUTHORITY_APPROVAL"
+  }]
+}
