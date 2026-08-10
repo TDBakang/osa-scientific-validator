@@ -24,8 +24,7 @@ jobs:
       - name: 🛠️ Installation des dépendances
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pyyaml pydantic jinja2 typer rich
-          pip install -e .
+          pip install -e ".[test]"
 
       - name: ⚙️ Compilation du SDK ROCSA
         run: |

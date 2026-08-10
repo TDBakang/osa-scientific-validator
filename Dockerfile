@@ -12,7 +12,7 @@ COPY tests/ ./tests/
 
 # Installation du package local + pytest pour le stage builder
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir . pytest
+    pip install --no-cache-dir ".[test]"
 
 RUN python3 -c "from rocsa_generator import RocsaRegistry, RocsaEngine; \
     from pathlib import Path; \
