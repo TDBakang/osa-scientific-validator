@@ -54,3 +54,8 @@ __all__ = [
     "FNCsaCatalog",
     "FNCsaDefinition",
 ]
+
+# Re-exports L3
+from rocsa_generator.models.fn_csa import *
+from rocsa_generator.models.compiled_control import *
+from rocsa_generator.models.compilation_artifact import *
