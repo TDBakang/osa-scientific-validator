@@ -159,8 +159,16 @@ class FNCsaDefinition(StrictModel):
             raise ValueError("governance and identity status differ")
         return self
 
-    def assert_publishable(self) -> None:
-        """Refuse toute publication d'une fiche encore proposée ou non référencée."""
+    def publishability_report(self) -> tuple[bool, list[str]]:
+        """Évalue l'éligibilité à la publication SANS lever d'exception.
+
+        Retourne (publiable, motifs_de_blocage). Cette méthode est la
+        source unique de vérité des critères de publication : elle est
+        utilisée à la fois par assert_publishable() (qui lève une
+        exception si non publiable) et par toute observation externe
+        qui a besoin de connaître l'état sans provoquer de blocage
+        (par ex. la qualification d'un artefact compilé au 2.3-C2, qui
+        ne doit jamais échouer sur une fiche PROPOSED)."""
         errors: list[str] = []
         if self.identity.status not in {
             DocumentStatus.VALIDATED,
@@ -178,6 +186,11 @@ class FNCsaDefinition(StrictModel):
             errors.append("ESVP references are missing")
         if self.history[-1].approved_by.startswith("PENDING_"):
             errors.append("scientific approval is pending")
+        return (len(errors) == 0, errors)
+
+    def assert_publishable(self) -> None:
+        """Refuse toute publication d'une fiche encore proposée ou non référencée."""
+        publishable, errors = self.publishability_report()
         if errors:
             raise ValueError("FN-CSA is not publishable: " + "; ".join(errors))
 
