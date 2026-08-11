@@ -190,7 +190,7 @@ def _write_report_exclusive(output_dir: Path, base_stem: str, data: dict[str, ob
     suffix = 0
     while True:
         try:
-            fd = os.open(candidate, os.O_WRONLY | os.O_CREAT | os.O_EXCL)
+            fd = os.open(candidate, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
         except FileExistsError:
             suffix += 1
             candidate = output_dir / f"{base_stem}-{suffix}.json"
