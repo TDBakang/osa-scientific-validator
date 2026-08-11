@@ -1,12 +1,4 @@
-"""Strict immutable contracts for the pure 2.3-D-L2 boundary.
-
-Réutilise directement CompilationArtifact/CompiledCSAControl de
-rocsa_generator.models (2.3-C1/C2) plutôt que de dupliquer une projection
-locale. Une projection dupliquée aurait maintenu deux sources de vérité
-pour le même vocabulaire (DocumentStatus, FamilyId, SemanticVersion) —
-c'est exactement le mécanisme qui a produit les régressions corrigées
-lors de la revue de cette livraison (cf. DECISION-2.3-D-L2.md, addendum).
-"""
+"""Strict immutable contracts for the pure 2.3-D-L2 boundary."""
 
 from __future__ import annotations
 
@@ -15,15 +7,9 @@ from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from rocsa_generator.models import CompilationArtifact
+from .models.compilation_artifact import CompilationArtifact
 
-# Versions internes de l'outillage L2 (générateur, templates, renderer,
-# schéma, canonicalisation) : SemVer strict, sans suffixe de pré-version.
-# Distinct de SemanticVersion de fn_csa.py (qui autorise les suffixes de
-# pré-version pour les fiches source) — les deux vocabulaires ne se
-# confondent jamais, cf. D-SCAFFOLD-21.
-SemVer = Annotated[str, Field(pattern=r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")]
-
+ToolSemVer = Annotated[str, Field(pattern=r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")]
 Sha256 = Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
 NonEmpty = Annotated[str, Field(min_length=1, pattern=r".*\S.*")]
 
@@ -49,12 +35,12 @@ class Ownership(StrEnum):
 
 
 class ScaffoldConfiguration(StrictModel):
-    scaffold_contract_version: SemVer = "1.2.0"
-    generator_version: SemVer = "0.4.0"
-    template_set_version: SemVer = "1.0.0"
+    scaffold_contract_version: ToolSemVer = "1.2.1"
+    generator_version: ToolSemVer = "0.4.1"
+    template_set_version: ToolSemVer = "1.0.1"
     renderer_id: Annotated[str, Field(pattern=r"^[a-z][a-z0-9_-]{2,63}$")] = "python_pure_v1"
-    manifest_schema_version: SemVer = "1.2.0"
-    canonicalization_version: SemVer = "1.0.0"
+    manifest_schema_version: ToolSemVer = "1.2.1"
+    canonicalization_version: ToolSemVer = "1.0.0"
 
 
 class PlannedFile(StrictModel):
@@ -75,8 +61,6 @@ class PlannedFile(StrictModel):
 
 
 class ScaffoldPlan(StrictModel):
-    # Le vrai CompilationArtifact de 2.3-C2 (control/provenance/field_trace/
-    # omitted_source_sections/qualification), pas une projection locale.
     artifact: CompilationArtifact
     configuration: ScaffoldConfiguration
     payload_files: tuple[PlannedFile, PlannedFile]
@@ -99,12 +83,12 @@ class RenderedFile(StrictModel):
 
 
 class ManifestDraft(StrictModel):
-    manifest_schema_version: SemVer
-    scaffold_contract_version: SemVer
-    generator_version: SemVer
-    template_set_version: SemVer
+    manifest_schema_version: ToolSemVer
+    scaffold_contract_version: ToolSemVer
+    generator_version: ToolSemVer
+    template_set_version: ToolSemVer
     renderer_id: str
-    canonicalization_version: SemVer
+    canonicalization_version: ToolSemVer
     source: dict[str, object]
     qualification: dict[str, object]
     authority: dict[str, bool]
