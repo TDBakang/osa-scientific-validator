@@ -1,0 +1,43 @@
+{
+  "cpu_count": 4,
+  "disk_free_bytes": 6265081856,
+  "disk_total_bytes": 6267912192,
+  "disk_used_bytes": 2830336,
+  "git_branch": "main",
+  "git_commit": "e41731e56b258baea990c8a87fd53f3d1d0538dc",
+  "git_dirty": false,
+  "initial_load_average": [
+    0.1787109375,
+    0.0986328125,
+    0.07958984375
+  ],
+  "iterations": 1000,
+  "l2_render": {
+    "max_ms": 0.26075495406985283,
+    "median_ms": 0.03814767114818096,
+    "min_ms": 0.03663497045636177,
+    "n": 1000,
+    "p95_ms": 0.06404705345630646,
+    "p99_ms": 0.07598474621772766
+  },
+  "l3_publish": {
+    "all_succeeded": true,
+    "files_per_iteration": 4,
+    "max_ms": 1.0316716507077217,
+    "median_ms": 0.26812078431248665,
+    "min_ms": 0.23719901219010353,
+    "n": 1000,
+    "p95_ms": 0.3954092971980572,
+    "p99_ms": 0.4846835508942604,
+    "write_mode": "CREATE_ONLY"
+  },
+  "percentile_method": "nearest-rank-ceiling",
+  "platform": "Linux-7.0.0-27-generic-x86_64-with-glibc2.43",
+  "protocol": "D-SCAFFOLD-27",
+  "protocol_official_run": true,
+  "python_version": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "rocsa_generator_version": "0.1.0",
+  "timestamp_utc": "2026-08-11T21:40:44.007164Z",
+  "tmp_directory": "/tmp",
+  "warmup": 10
+}
