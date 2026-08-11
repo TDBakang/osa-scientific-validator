@@ -9,6 +9,8 @@ from rocsa_generator.models.csa import (
     EvidenceLevel,
 )
 from rocsa_generator.models.request import GenerationRequest, GenerationResult, OutputFormat
+from rocsa_generator.models.compiled_control import CompiledCSAControl
+from rocsa_generator.models.fn_csa import FNCsaCatalog, FNCsaDefinition
 
 __all__ = [
     "GenerationRequest",
@@ -22,4 +24,7 @@ __all__ = [
     "EvidenceLevel",
     "CSATrace",
     "CSAMetadata",
+    "CompiledCSAControl",
+    "FNCsaCatalog",
+    "FNCsaDefinition",
 ]

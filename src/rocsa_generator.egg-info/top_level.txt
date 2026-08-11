@@ -1,2 +1,0 @@
-rocsa
-rocsa_generator
