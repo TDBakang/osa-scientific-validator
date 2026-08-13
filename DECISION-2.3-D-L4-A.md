@@ -1,6 +1,6 @@
 # Décisions doctrinales — 2.3-D-L4-A (protocole de benchmark)
 
-Statut : `PROPOSED`
+Statut : `Actée`
 Date : 2026-08-11
 
 ## Contexte
